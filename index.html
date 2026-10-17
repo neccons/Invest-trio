@@ -5,379 +5,210 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#101827">
-<meta name="description" content="Invest Trio - experiment financiar de 30 de zile, jurnal și analiză prudentă.">
-<title>Invest Trio — Experiment financiar</title>
-
+<title>Invest Trio</title>
 <style>
-:root {
-  color-scheme: dark;
-  --bg: #101827;
-  --card: #1b273a;
-  --border: #344156;
-  --text: #f8fafc;
-  --muted: #a5b4cc;
-  --blue: #60a5fa;
-  --green: #86efac;
-  --red: #fca5a5;
-}
-* { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  line-height: 1.5;
-}
-main {
-  max-width: 680px;
-  margin: auto;
-  padding: 24px 16px 40px;
-}
-h1 { font-size: 30px; margin: 0; }
-h2 { font-size: 18px; margin: 0 0 14px; }
-h3 { font-size: 15px; margin: 0 0 8px; }
-p { margin: 10px 0; }
-.sub { color: var(--muted); margin: 8px 0 22px; }
-
-.card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 17px;
-  padding: 17px;
-  margin: 14px 0;
-}
-.stats {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-}
-.label { display: block; font-size: 13px; color: var(--muted); }
-.value { font-size: 23px; font-weight: 750; margin-top: 7px; }
-.muted { color: var(--muted); font-size: 13px; }
-.positive { color: var(--green); }
-.negative { color: var(--red); }
-
-textarea, input, select {
-  width: 100%;
-  border: 1px solid #475569;
-  border-radius: 11px;
-  padding: 12px;
-  font: inherit;
-  background: var(--bg);
-  color: var(--text);
-}
-textarea { min-height: 110px; resize: vertical; }
-input { margin: 6px 0 12px; }
-button {
-  border: 0;
-  border-radius: 11px;
-  padding: 12px 15px;
-  background: var(--blue);
-  color: #101827;
-  font: inherit;
-  font-weight: 700;
-  cursor: pointer;
-}
-button:focus-visible, input:focus-visible, textarea:focus-visible {
-  outline: 2px solid white;
-  outline-offset: 3px;
-}
-button:disabled { opacity: .5; cursor: not-allowed; }
-.secondary { background: #334155; color: white; }
-.danger { background: #7f1d1d; color: white; }
-.actions { display: flex; gap: 9px; flex-wrap: wrap; margin-top: 12px; }
-.actions button { flex: 1 1 180px; }
-.output {
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-  font-size: 14px;
-}
-.notice {
-  padding: 12px;
-  border-radius: 10px;
-  background: #101827;
-  color: var(--muted);
-  font-size: 13px;
-}
-.entry {
-  border-top: 1px solid var(--border);
-  padding: 12px 0;
-}
-.entry:first-child { border-top: 0; }
-.entry-date { color: var(--muted); font-size: 12px; }
-.entry-value { font-weight: 700; margin-top: 4px; }
-footer { color: var(--muted); font-size: 12px; padding-top: 12px; }
-
-@media (max-width: 380px) {
-  h1 { font-size: 25px; }
-  .stats { grid-template-columns: 1fr 1fr; gap: 8px; }
-  .card { padding: 13px; }
-  .value { font-size: 20px; }
-}
+*{box-sizing:border-box}
+body{margin:0;background:#101827;color:#f8fafc;font-family:system-ui,-apple-system,sans-serif;line-height:1.5}
+main{max-width:680px;margin:auto;padding:22px 16px 40px}
+h1{margin:0;font-size:29px}
+h2{font-size:18px;margin:0 0 12px}
+.sub,.muted,small{color:#a5b4cc}
+.sub{margin:8px 0 22px}
+.card{background:#1b273a;border:1px solid #344156;border-radius:16px;padding:16px;margin:14px 0}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.label{display:block;font-size:13px;color:#a5b4cc}
+.value{font-size:22px;font-weight:700;margin-top:6px;overflow-wrap:anywhere}
+textarea,input{width:100%;border-radius:10px;padding:12px;font:inherit;background:#101827;color:white;border:1px solid #475569}
+textarea{min-height:100px;resize:vertical}
+button{border:0;border-radius:10px;padding:12px 15px;background:#60a5fa;color:#101827;font-size:15px;font-weight:700;cursor:pointer}
+.secondary{background:#334155;color:white}
+.danger{background:#7f1d1d;color:white}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:10px}
+.actions button{flex:1 1 150px}
+.output{white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px}
+.entry{border-top:1px solid #344156;padding:12px 0}
+.entry:first-child{border-top:0}
+.good{color:#86efac}
+.bad{color:#fca5a5}
+.notice{background:#101827;border-radius:10px;padding:12px;color:#cbd5e1;font-size:13px}
 </style>
 </head>
-
 <body>
 <main>
-  <header>
-    <h1>🤝 Invest Trio</h1>
-    <p class="sub">Tu + ChatGPT + Gemini · Experiment de 30 de zile</p>
-  </header>
+<h1>🤝 Invest Trio</h1>
+<p class="sub">Tu + ChatGPT + Gemini · Experiment de 30 de zile</p>
 
-  <section class="stats" aria-label="Datele experimentului">
-    <div class="card">
-      <div class="label">Capital inițial</div>
-      <div class="value">10,00 €</div>
-      <p class="muted">Valoare de referință</p>
-    </div>
-    <div class="card">
-      <div class="label">Investiție urmărită</div>
-      <div class="value">VUAA</div>
-      <p class="muted">ETF care urmărește indicele S&amp;P 500</p>
-    </div>
-  </section>
-
+<div class="stats">
   <section class="card">
-    <h2>💬 Discuția noastră</h2>
-    <p class="muted">
-      Scrie o întrebare. Pregătim mesajul pentru unul dintre cele două AI-uri.
-    </p>
-    <label class="label" for="question">Mesajul tău</label>
-    <textarea id="question" placeholder="Ex.: Ce riscuri și comisioane trebuie să verificăm pentru VUAA?"></textarea>
-    <div class="actions">
-      <button type="button" onclick="prepare('chatgpt')">
-        ChatGPT
-      </button>
-      <button type="button" class="secondary" onclick="prepare('gemini')">
-        Gemini
-      </button>
-    </div>
-    <p class="notice">
-      Aplicația încearcă să copieze mesajul și deschide separat serviciul ales.
-      Verifică dacă textul a fost copiat și lipește-l în conversație.
-      Nu trimitem automat mesaje.
-    </p>
+    <div class="label">Capital inițial</div>
+    <div class="value">10,00 €</div>
   </section>
-
   <section class="card">
-    <h2>📈 Jurnalul experimentului</h2>
-    <p class="muted">
-      Introdu valoarea pe care dorești să o urmărești.
-      Folosește valoarea reală numai dacă ai verificat-o.
-    </p>
-
-    <label class="label" for="balance">Valoare în euro (€)</label>
-    <input id="balance" type="text" inputmode="decimal"
-      value="10,00" placeholder="Ex.: 10,00">
-
-    <label class="label" for="note">Notă (opțional)</label>
-    <textarea id="note" style="min-height:65px"
-      placeholder="Ex.: Valoare verificată, comisioane, observații..."></textarea>
-
-    <div class="actions">
-      <button type="button" onclick="saveEntry()">Salvează în jurnal</button>
-      <button type="button" class="secondary" onclick="showLog()">Reîncarcă jurnalul</button>
-    </div>
-
-    <div class="stats" style="margin-top:14px">
-      <div class="card">
-        <div class="label">Ultima valoare salvată</div>
-        <div class="value" id="currentValue">—</div>
-      </div>
-      <div class="card">
-        <div class="label">Diferență față de 10 €</div>
-        <div class="value" id="difference">—</div>
-      </div>
-    </div>
-
-    <p id="storageStatus" class="muted" role="status">
-      Jurnalul se salvează local pe acest dispozitiv.
-    </p>
-
-    <h3>Istoricul înregistrărilor</h3>
-    <div id="log" class="output" aria-live="polite">
-      Jurnalul se încarcă...
-    </div>
-
-    <div class="actions">
-      <button type="button" class="secondary" onclick="exportLog()">
-        Exportă jurnalul
-      </button>
-    </div>
+    <div class="label">Investiție urmărită</div>
+    <div class="value">VUAA</div>
   </section>
+</div>
 
-  <section class="card">
-    <h2>🗓️ Planul nostru de 30 de zile</h2>
-    <p>Urmărim evoluția, verificăm informațiile și discutăm deciziile.</p>
-    <ol>
-      <li>Verificăm instrumentul, moneda, comisioanele și riscurile.</li>
-      <li>Înregistrăm valorile și notăm sursa informațiilor.</li>
-      <li>Comparăm rezultatele fără să confundăm evoluția trecută cu cea viitoare.</li>
-      <li>La final, analizăm ce am învățat și ce limite a avut experimentul.</li>
-    </ol>
-    <p class="notice">
-      Aceasta este o structură de monitorizare, nu dovada că a fost efectuată
-      o investiție. O valoare introdusă manual nu este verificată automat.
-    </p>
-  </section>
+<section class="card">
+<h2>💬 Discuția noastră</h2>
+<label class="label" for="question">Mesajul tău</label>
+<textarea id="question" placeholder="Scrie întrebarea pentru ChatGPT și Gemini..."></textarea>
+<div class="actions">
+<button type="button" onclick="prepare('chatgpt')">ChatGPT</button>
+<button type="button" class="secondary" onclick="prepare('gemini')">Gemini</button>
+</div>
+<p class="notice">Mesajul este copiat pentru a-l lipi manual în conversația AI. Nu se trimit automat mesaje.</p>
+</section>
 
-  <section class="card">
-    <h2>🛡️ Regula noastră</h2>
-    <p>
-      Verificăm riscurile, comisioanele și sursele. Separăm faptele de ipoteze.
-      Nu promitem profituri și nu executăm tranzacții.
-    </p>
-    <p class="muted">
-      VUAA este un ETF cu expunere la acțiuni americane. Valoarea sa poate
-      scădea, iar investiția poate produce pierderi. Comisioanele și taxele
-      depind de situația concretă.
-    </p>
-  </section>
+<section class="card">
+<h2>📈 Jurnalul experimentului</h2>
+<label class="label" for="balance">Valoarea actuală (€)</label>
+<input id="balance" type="text" inputmode="decimal" value="10,00" placeholder="10,00">
 
-  <footer>
-    Invest Trio · Jurnal experimental · Datele nu reprezintă cotații în timp real.
-    Jurnalul este păstrat în browserul acestui dispozitiv.
-  </footer>
+<label class="label" for="note" style="margin-top:12px">Notă (opțional)</label>
+<textarea id="note" style="min-height:65px" placeholder="Observații sau sursa valorii..."></textarea>
+
+<div class="actions">
+<button type="button" onclick="saveEntry()">Salvează în jurnal</button>
+<button type="button" class="secondary" onclick="showLog()">Reîncarcă jurnalul</button>
+</div>
+
+<div class="stats" style="margin-top:12px">
+  <div class="card">
+    <div class="label">Ultima valoare</div>
+    <div class="value" id="currentValue">—</div>
+  </div>
+  <div class="card">
+    <div class="label">Diferență față de 10 €</div>
+    <div class="value" id="difference">—</div>
+  </div>
+</div>
+
+<p id="status" class="muted" role="status">Jurnal local — datele rămân în acest browser.</p>
+<h2 style="margin-top:20px">Istoricul înregistrărilor</h2>
+<div id="log" class="output" aria-live="polite">Se încarcă jurnalul...</div>
+<div class="actions">
+<button type="button" class="secondary" onclick="exportLog()">Exportă jurnalul CSV</button>
+</div>
+</section>
+
+<section class="card">
+<h2>🗓️ Planul de 30 de zile</h2>
+<p>1. Verificăm instrumentul și comisioanele.</p>
+<p>2. Înregistrăm valorile și sursele lor.</p>
+<p>3. Evaluăm riscurile și evoluția.</p>
+<p>4. La final, analizăm rezultatele fără a presupune că se vor repeta.</p>
+</section>
+
+<section class="card">
+<h2>🛡️ Regula noastră</h2>
+<p>Separăm faptele de ipoteze. Nu promitem profituri și nu executăm tranzacții.</p>
+<p class="muted">VUAA urmărește indicele S&amp;P 500. Investiția poate pierde valoare. Aplicația nu afișează cotații în timp real.</p>
+</section>
 </main>
 
 <script>
 'use strict';
 
-const INITIAL_CAPITAL = 10;
-const STORAGE_KEY = 'invest-trio-log-v2';
+const CAPITAL_INITIAL = 10;
+const KEY = 'invest-trio-log-v3';
 
 function prepare(ai) {
-  const question = document.getElementById('question').value.trim();
-
-  if (!question) {
+  const q = document.getElementById('question').value.trim();
+  if (!q) {
     alert('Scrie mai întâi întrebarea ta.');
-    document.getElementById('question').focus();
     return;
   }
 
-  const promptText =
+  const prompt =
     'Invest Trio — experiment financiar de 30 de zile.\n' +
-    'Participanți: eu, ChatGPT și Gemini.\n\n' +
-    'Analizează prudent întrebarea. Separă faptele de ipoteze. ' +
-    'Verifică riscurile, comisioanele și limitele informațiilor. ' +
-    'Nu presupune profituri garantate și nu inventa cotații actuale. ' +
-    'Precizează când este necesară verificarea unor surse actualizate. ' +
-    'Nu executa tranzacții.\n\n' +
-    'Capital de referință: 10 EUR.\n' +
-    'Instrument urmărit: VUAA.\n\n' +
-    'Mesajul meu:\n' + question;
+    'Participanți: eu, ChatGPT și Gemini.\n' +
+    'Analizează prudent, separă faptele de ipoteze și explică riscurile și costurile. ' +
+    'Nu presupune profituri garantate și nu inventa cotații actuale.\n\n' +
+    'Capital de referință: 10 EUR. Instrument urmărit: VUAA.\n' +
+    'Mesajul meu: ' + q;
 
-  const isGemini = ai === 'gemini';
-  const url = isGemini
-    ? 'https://gemini.google.com/'
-    : 'https://chatgpt.com/';
+  window.open(
+    ai === 'gemini' ? 'https://gemini.google.com/' : 'https://chatgpt.com/',
+    '_blank',
+    'noopener'
+  );
 
-  // Deschiderea este inițiată direct de apăsarea utilizatorului.
-  const newWindow = window.open(url, '_blank');
-
-  if (newWindow) {
-    try { newWindow.opener = null; } catch (e) {}
-  }
-
-  copyPrompt(promptText, isGemini ? 'Gemini' : 'ChatGPT');
+  copyPrompt(prompt, ai === 'gemini' ? 'Gemini' : 'ChatGPT');
 }
 
-async function copyPrompt(promptText, serviceName) {
+async function copyPrompt(text, service) {
   try {
     if (!navigator.clipboard || !navigator.clipboard.writeText) {
       throw new Error('Clipboard indisponibil');
     }
-
-    await navigator.clipboard.writeText(promptText);
-    alert(
-      'Mesaj copiat pentru ' + serviceName +
-      '. Lipește-l în conversația deschisă.'
-    );
+    await navigator.clipboard.writeText(text);
+    alert('Mesaj copiat. Lipește-l în conversația ' + service + '.');
   } catch (error) {
-    // Alternativă pentru browsere fără acces la clipboard.
-    window.prompt(
-      'Copierea automată nu a reușit. Selectează și copiază mesajul:',
-      promptText
-    );
+    window.prompt('Copiază manual mesajul de mai jos:', text);
   }
 }
 
 function readEntries() {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return [];
-
-    const parsed = JSON.parse(raw);
-    if (!Array.isArray(parsed)) return [];
-
-    return parsed.filter(function (entry) {
-      return entry &&
-        typeof entry.date === 'string' &&
-        typeof entry.value === 'number' &&
-        Number.isFinite(entry.value) &&
-        entry.value >= 0;
-    });
+    const data = JSON.parse(localStorage.getItem(KEY) || '[]');
+    return Array.isArray(data) ? data.filter(x =>
+      x && typeof x.value === 'number' &&
+      Number.isFinite(x.value) && x.value >= 0 &&
+      typeof x.date === 'string'
+    ) : [];
   } catch (error) {
-    document.getElementById('storageStatus').textContent =
-      'Nu am putut citi jurnalul local. Verifică setările browserului.';
+    setStatus('Nu pot citi jurnalul. Verifică setările browserului.');
     return [];
   }
 }
 
+function setStatus(message) {
+  document.getElementById('status').textContent = message;
+}
+
 function parseAmount(value) {
-  const normalized = value.trim().replace(/\s/g, '').replace(',', '.');
-
-  if (!normalized || !/^\d+(\.\d{1,})?$/.test(normalized)) {
-    return null;
-  }
-
-  const amount = Number(normalized);
-
-  if (!Number.isFinite(amount) || amount < 0) {
-    return null;
-  }
-
-  return Math.round(amount * 100) / 100;
+  const cleaned = value.trim().replace(/\s/g, '').replace(',', '.');
+  if (!/^\d+(\.\d+)?$/.test(cleaned)) return null;
+  const n = Number(cleaned);
+  return Number.isFinite(n) && n >= 0 ? Math.round(n * 100) / 100 : null;
 }
 
 function money(value) {
   return new Intl.NumberFormat('ro-RO', {
-    style: 'currency',
-    currency: 'EUR'
+    style: 'currency', currency: 'EUR'
   }).format(value);
 }
 
 function saveEntry() {
-  const amount = parseAmount(
-    document.getElementById('balance').value
-  );
-
-  if (amount === null) {
+  const value = parseAmount(document.getElementById('balance').value);
+  if (value === null) {
     alert('Introdu o valoare validă, de exemplu 10 sau 9,93.');
-    document.getElementById('balance').focus();
     return;
   }
 
-  const note = document.getElementById('note').value.trim();
   const entries = readEntries();
-
   entries.push({
     date: new Date().toISOString(),
-    value: amount,
-    note: note
+    value: value,
+    note: document.getElementById('note').value.trim()
   });
 
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
-    document.getElementById('storageStatus').textContent =
-      'Înregistrare salvată local pe acest dispozitiv.';
+    // Verificăm și citim înapoi datele după salvare.
+    localStorage.setItem(KEY, JSON.stringify(entries));
+    const check = JSON.parse(localStorage.getItem(KEY) || 'null');
+
+    if (!Array.isArray(check) || check.length !== entries.length) {
+      throw new Error('Verificarea salvării a eșuat');
+    }
+
     document.getElementById('note').value = '';
+    setStatus('Salvare confirmată în memoria locală a browserului.');
     showLog();
   } catch (error) {
-    document.getElementById('storageStatus').textContent =
-      'Salvarea a eșuat. Browserul poate bloca stocarea sau poate fi plin.';
-    alert('Nu am putut salva jurnalul. Exportă sau notează datele înainte de a închide pagina.');
+    setStatus('SALVARE EȘUATĂ. Browserul poate bloca stocarea.');
+    alert('Nu s-a putut salva jurnalul. Încearcă în browserul obișnuit, nu în modul privat.');
   }
 }
 
@@ -390,87 +221,70 @@ function showLog() {
     log.textContent = 'Jurnalul este gol. Salvează prima înregistrare.';
     document.getElementById('currentValue').textContent = '—';
     document.getElementById('difference').textContent = '—';
-    document.getElementById('difference').className = 'value';
     return;
   }
 
   const latest = entries[entries.length - 1];
-  const diff = Math.round((latest.value - INITIAL_CAPITAL) * 100) / 100;
+  const difference = Math.round((latest.value - CAPITAL_INITIAL) * 100) / 100;
 
   document.getElementById('currentValue').textContent = money(latest.value);
-
   const diffElement = document.getElementById('difference');
-  diffElement.textContent = (diff > 0 ? '+' : '') + money(diff);
-  diffElement.className = 'value ' +
-    (diff > 0 ? 'positive' : diff < 0 ? 'negative' : '');
+  diffElement.textContent = (difference > 0 ? '+' : '') + money(difference);
+  diffElement.className = 'value ' + (difference > 0 ? 'good' : difference < 0 ? 'bad' : '');
 
-  entries.slice().reverse().forEach(function (entry) {
-    const wrapper = document.createElement('div');
-    wrapper.className = 'entry';
+  entries.slice().reverse().forEach(entry => {
+    const item = document.createElement('div');
+    item.className = 'entry';
 
     const date = document.createElement('div');
-    date.className = 'entry-date';
-
+    date.className = 'muted';
     const parsedDate = new Date(entry.date);
     date.textContent = Number.isNaN(parsedDate.getTime())
       ? 'Dată indisponibilă'
       : parsedDate.toLocaleString('ro-RO');
 
-    const value = document.createElement('div');
-    value.className = 'entry-value';
-    value.textContent = money(entry.value);
+    const amount = document.createElement('div');
+    amount.style.fontWeight = '700';
+    amount.textContent = money(entry.value);
 
-    wrapper.append(date, value);
+    item.append(date, amount);
 
     if (entry.note) {
       const note = document.createElement('p');
       note.className = 'muted';
       note.textContent = entry.note;
-      wrapper.appendChild(note);
+      item.appendChild(note);
     }
-
-    log.appendChild(wrapper);
+    log.appendChild(item);
   });
 }
 
 function exportLog() {
   const entries = readEntries();
-
   if (!entries.length) {
-    alert('Nu există înregistrări de exportat.');
+    alert('Nu există date de exportat.');
     return;
   }
 
-  const header = ['Data', 'Valoare EUR', 'Notă'];
-  const rows = entries.map(function (entry) {
-    return [
-      new Date(entry.date).toLocaleString('ro-RO'),
-      entry.value.toFixed(2),
-      entry.note || ''
-    ];
-  });
+  const csvCell = value => '"' + String(value).replace(/"/g, '""') + '"';
+  const rows = [['Data și ora', 'Valoare EUR', 'Notă']];
 
-  function csvCell(value) {
-    return '"' + String(value).replace(/"/g, '""') + '"';
-  }
+  entries.forEach(entry => rows.push([
+    new Date(entry.date).toLocaleString('ro-RO'),
+    entry.value.toFixed(2),
+    entry.note || ''
+  ]));
 
-  const csv = '\uFEFF' +
-    [header, ...rows].map(function (row) {
-      return row.map(csvCell).join(';');
-    }).join('\r\n');
-
-  const blob = new Blob([csv], {
-    type: 'text/csv;charset=utf-8;'
-  });
-  const objectUrl = URL.createObjectURL(blob);
+  const csv = '\uFEFF' + rows.map(row => row.map(csvCell).join(';')).join('\r\n');
+  const blob = new Blob([csv], {type: 'text/csv;charset=utf-8;'});
+  const url = URL.createObjectURL(blob);
   const link = document.createElement('a');
-
-  link.href = objectUrl;
+  link.href = url;
   link.download = 'invest-trio-jurnal.csv';
   document.body.appendChild(link);
   link.click();
   link.remove();
-  URL.revokeObjectURL(objectUrl);
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
 showLog();

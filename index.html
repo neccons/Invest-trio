@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101827">
+<title>Invest Trio</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#101827;color:#f8fafc;font-family:-apple-system,BlinkMacSystemFont,sans-serif}
+main{max-width:650px;margin:auto;padding:22px 16px}
+h1{margin:0;font-size:29px}
+.sub{color:#a5b4cc;margin:8px 0 22px}
+.card{background:#1b273a;border:1px solid #344156;border-radius:17px;padding:16px;margin:14px 0}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.label{font-size:13px;color:#a5b4cc}
+.value{font-size:23px;font-weight:700;margin-top:8px}
+h2{font-size:17px;margin:0 0 12px}
+textarea{width:100%;min-height:100px;border-radius:12px;padding:12px;font:inherit;background:#101827;color:white;border:1px solid #475569;resize:vertical}
+button{border:0;border-radius:11px;padding:12px 15px;background:#60a5fa;color:#101827;font-size:15px;font-weight:700;cursor:pointer}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.secondary{background:#334155;color:white}
+.output{white-space:pre-wrap;overflow-wrap:anywhere;color:#dbeafe;font-size:14px;line-height:1.5}
+small{color:#a5b4cc;line-height:1.5}
+</style>
+</head>
+<body>
+<main>
+<h1>🤝 Invest Trio</h1>
+<p class="sub">Tu + ChatGPT + Gemini · Experiment de 30 de zile</p>
+
+<div class="stats">
+<div class="card">
+<div class="label">Capital inițial</div>
+<div class="value">10,00 €</div>
+</div>
+<div class="card">
+<div class="label">Investiție urmărită</div>
+<div class="value">VUAA</div>
+</div>
+</div>
+
+<section class="card">
+<h2>💬 Discuția noastră</h2>
+<textarea id="question" placeholder="Scrie întrebarea pentru ambele AI-uri..."></textarea>
+<div class="actions">
+<button onclick="prepare('chatgpt')">Pregătește pentru ChatGPT</button>
+<button class="secondary" onclick="prepare('gemini')">Pregătește pentru Gemini</button>
+</div>
+<p><small>Deschidem separat fiecare serviciu. Aplicația nu trimite automat mesaje către AI.</small></p>
+</section>
+
+<section class="card">
+<h2>📈 Jurnalul experimentului</h2>
+<label class="label" for="balance">Valoarea actuală (€)</label>
+<textarea id="balance" style="min-height:48px" inputmode="decimal">9.93</textarea>
+<div class="actions">
+<button onclick="save()">Salvează în jurnal</button>
+<button class="secondary" onclick="showLog()">Vezi jurnalul</button>
+</div>
+<div id="log" class="output"></div>
+</section>
+
+<section class="card">
+<h2>🛡️ Regula noastră</h2>
+<p class="output">Verificăm riscurile și comisioanele. Nu garantăm profituri și nu executăm tranzacții automat.</p>
+</section>
+</main>
+<script>
+function prepare(ai){
+const q=document.getElementById('question').value.trim();
+if(!q){alert('Scrie mai întâi o întrebare.');return}
+const prompt='Ajută-mă să analizez prudent experimentul financiar Invest Trio. Separă faptele de ipoteze și explică riscurile. Întrebarea mea: '+q;
+const url=ai==='gemini'?'https://gemini.google.com/':'https://chatgpt.com/';
+try{navigator.clipboard.writeText(prompt)}catch(e){}
+alert('Copiază întrebarea, apoi deschide '+(ai==='gemini'?'Gemini':'ChatGPT')+'.');
+window.open(url,'_blank');
+}
+function save(){
+const raw=document.getElementById('balance').value.replace(',','.');
+const n=Number(raw);
+if(!Number.isFinite(n)||n<0){alert('Introdu o valoare validă.');return}
+let entries=[];
+try{entries=JSON.parse(localStorage.getItem('invest-trio-log')||'[]')}catch(e){}
+entries.push({date:new Date().toLocaleString('ro-RO'),value:n});
+localStorage.setItem('invest-trio-log',JSON.stringify(entries));
+showLog();
+alert('Înregistrare salvată pe acest dispozitiv.');
+}
+function showLog(){
+let entries=[];
+try{entries=JSON.parse(localStorage.getItem('invest-trio-log')||'[]')}catch(e){}
+document.getElementById('log').textContent=entries.length?entries.map(x=>x.date+' — '+x.value.toFixed(2)+' €').join('\n'):'Jurnalul este încă gol.';
+}
+</script>
+</body>
+</html>

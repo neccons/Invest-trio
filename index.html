@@ -69,6 +69,78 @@ small{color:#a5b4cc;line-height:1.5}
 </main>
 <script>
 function prepare(ai){
+
+async function prepare(ai) {
+
+  const question = document.getElementById('question').value.trim();
+
+  if (!question) {
+
+    alert('Scrie mai întâi o întrebare.');
+
+    return;
+
+  }
+
+  const promptText =
+
+    'Invest Trio — experiment financiar de 30 de zile.\n' +
+
+    'Tu, ChatGPT și Gemini analizăm prudent rezultatele.\n' +
+
+    'Separă faptele de ipoteze, verifică riscurile și comisioanele. ' +
+
+    'Nu presupune profituri garantate și nu recomanda tranzacții ' +
+
+    'fără a explica riscurile.\n\n' +
+
+    'Mesajul meu: ' + question;
+
+  const isGemini = ai === 'gemini';
+
+  const url = isGemini
+
+    ? 'https://gemini.google.com/'
+
+    : 'https://chatgpt.com/';
+
+  // Deschidem pagina în urma apăsării utilizatorului.
+
+  window.open(url, '_blank');
+
+  try {
+
+    if (!navigator.clipboard ||
+
+        !navigator.clipboard.writeText) {
+
+      throw new Error('Clipboard indisponibil');
+
+    }
+
+    await navigator.clipboard.writeText(promptText);
+
+    alert(
+
+      'Mesaj copiat! Lipește-l în ' +
+
+      (isGemini ? 'Gemini' : 'ChatGPT') + '.'
+
+    );
+
+  } catch (error) {
+
+    window.prompt(
+
+      'Copierea automată nu a funcționat. Copiază textul de mai jos:',
+
+      promptText
+
+    );
+
+  }
+
+}
 const q=document.getElementById('question').value.trim();
 if(!q){alert('Scrie mai întâi o întrebare.');return}
 const prompt='Ajută-mă să analizez prudent experimentul financiar Invest Trio. Separă faptele de ipoteze și explică riscurile. Întrebarea mea: '+q;
